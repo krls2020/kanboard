@@ -8,7 +8,8 @@ zerops:
       deployFiles: [.]
       cache: [vendor]
     run:
-      os: ubuntu
+      prepareCommands:
+        - apk add --no-cache php84-ctype php84-session php84-xml php84-dom php84-simplexml php84-pdo php84-pdo_pgsql php84-pgsql php84-mbstring php84-gd php84-json php84-zip php84-iconv php84-fileinfo php84-tokenizer
       envVariables:
         DB_HOST: db
         DB_PORT: ${db_port}
