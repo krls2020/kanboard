@@ -21,6 +21,9 @@
             <?= $this->asset->css('assets/css/light.min.css') ?>
         <?php endif ?>
         <?= $this->asset->css('assets/css/print.min.css', true, 'print') ?>
+        <?= $this->asset->css('assets/css/modern-base.css') ?>
+        <?= $this->asset->css('assets/css/modern-board.css') ?>
+        <?= $this->asset->css('assets/css/modern-pages.css') ?>
         <?= $this->asset->customCss() ?>
 
         <?php if (! isset($not_editable)): ?>

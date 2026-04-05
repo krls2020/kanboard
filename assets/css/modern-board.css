@@ -1,0 +1,913 @@
+/*
+ * Modern Board & Task Cards — Kanboard CSS Override
+ * Part 2 of modern redesign: Kanban board, columns, cards, drag-and-drop
+ * Design language: indigo primary, slate grays, rounded corners, subtle shadows
+ */
+
+/* ============================================================
+   1. BOARD TABLE — Remove old table chrome
+   ============================================================ */
+
+#board {
+    border-collapse: separate;
+    border-spacing: 8px 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#board,
+#board tr,
+#board td,
+#board th {
+    border: none !important;
+    background: transparent;
+}
+
+#board-container {
+    padding: 0 4px 16px;
+    overflow-x: auto;
+}
+
+/* ============================================================
+   2. COLUMN HEADERS
+   ============================================================ */
+
+#board th.board-column-header {
+    background: #f1f5f9;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 12px 14px;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #334155;
+    letter-spacing: 0.01em;
+    border-bottom: 2px solid #e2e8f0 !important;
+    position: relative;
+}
+
+#board th.board-column-header-first {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Column title dropdown */
+#board .board-column-title .dropdown-menu {
+    color: #334155;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+#board .board-column-title .dropdown-menu:hover,
+#board .board-column-title .dropdown-menu:focus {
+    color: #4f46e5;
+}
+
+#board .board-column-title .dropdown-menu i.fa-caret-down {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-left: 2px;
+    transition: opacity 0.15s ease;
+}
+
+#board .board-column-title .dropdown-menu:hover i.fa-caret-down {
+    opacity: 1;
+}
+
+/* Sort dropdown icon */
+#board .board-column-title .dropdown-menu i.fa-sort {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+#board .board-column-title .dropdown-menu i.fa-sort:hover {
+    background: #e2e8f0;
+    color: #4f46e5;
+}
+
+/* Column dropdown menus */
+#board .board-column-title .dropdown ul,
+.board-column-expanded-header .dropdown ul {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.06);
+    padding: 6px;
+    min-width: 200px;
+    z-index: 100;
+}
+
+#board .board-column-title .dropdown ul li,
+.board-column-expanded-header .dropdown ul li {
+    padding: 0;
+    margin: 0;
+}
+
+#board .board-column-title .dropdown ul li a,
+.board-column-expanded-header .dropdown ul li a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #475569;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    transition: background 0.12s ease;
+}
+
+#board .board-column-title .dropdown ul li a:hover,
+.board-column-expanded-header .dropdown ul li a:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+    text-decoration: none;
+}
+
+/* Task count badge — pill style */
+.board-column-header-task-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 100px;
+    line-height: 1.4;
+}
+
+/* WIP limit exceeded — modern badge */
+.board-task-list-limit .board-column-header-task-count,
+#board th.board-column-header.board-task-list-limit {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+.board-task-list-limit .board-column-header-task-count {
+    background: #fee2e2 !important;
+    border: 1px solid #fca5a5;
+    font-weight: 600;
+}
+
+/* Add task icon */
+.board-add-icon {
+    float: right;
+}
+
+.board-add-icon i {
+    color: #94a3b8;
+    font-size: 1rem;
+    transition: color 0.15s ease;
+    padding: 2px;
+}
+
+.board-add-icon i:hover,
+.board-add-icon i:focus {
+    color: #4f46e5;
+}
+
+/* ============================================================
+   3. BOARD COLUMNS (td cells)
+   ============================================================ */
+
+#board td {
+    background: #f8fafc;
+    border-radius: 0 0 12px 12px;
+    padding: 6px 6px 12px !important;
+    vertical-align: top;
+}
+
+/* Task list container inside column */
+.board-task-list {
+    min-height: 60px;
+    padding: 4px 2px;
+}
+
+/* ============================================================
+   4. SWIMLANE HEADERS
+   ============================================================ */
+
+.board-swimlane-header {
+    background: #f8fafc !important;
+    border: none !important;
+    border-left: 3px solid #4f46e5 !important;
+    padding: 10px 16px !important;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #334155;
+    border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+}
+
+a.board-swimlane-toggle {
+    color: #94a3b8;
+    text-decoration: none;
+    margin-right: 6px;
+    transition: color 0.15s ease;
+}
+
+a.board-swimlane-toggle:hover,
+a.board-swimlane-toggle:focus {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+/* Swimlane task count */
+.board-swimlane-header .board-column-header-task-count {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    background: transparent;
+    padding: 0;
+}
+
+/* ============================================================
+   5. TASK CARDS
+   ============================================================ */
+
+.task-board {
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    border-left: 4px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 0 !important;
+    margin-bottom: 8px !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.15s ease;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.task-board:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+    border-color: #cbd5e1 !important;
+}
+
+.task-board:last-child {
+    margin-bottom: 4px !important;
+}
+
+/* Expanded card inner padding */
+.task-board-expanded {
+    padding: 12px 16px;
+}
+
+/* Collapsed card inner padding */
+.task-board-collapsed {
+    padding: 8px 12px;
+}
+
+/* Recently modified indicator */
+div.task-board-recent {
+    border-left-color: #4f46e5 !important;
+    background: #fafafe !important;
+}
+
+/* Closed task */
+div.task-board-status-closed {
+    opacity: 0.55;
+    filter: grayscale(30%);
+}
+
+div.task-board-status-closed:hover {
+    opacity: 0.75;
+}
+
+/* ============================================================
+   6. TASK CARD CONTENT
+   ============================================================ */
+
+/* Task header — ID + assignee row */
+.task-board-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 0.8125rem;
+}
+
+.task-board-header strong {
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+/* Task ID dropdown */
+.task-board-header .dropdown-menu {
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+.task-board-header .dropdown-menu:hover {
+    color: #4f46e5;
+}
+
+.task-board-header .dropdown-menu strong {
+    color: inherit;
+    font-weight: 500;
+}
+
+/* Assignee name */
+.task-board-assignee {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-left: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+/* Avatar */
+.task-board-avatars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.task-board-avatars .avatar-letter,
+.task-board .avatar-letter {
+    width: 24px !important;
+    height: 24px !important;
+    line-height: 24px !important;
+    font-size: 0.625rem !important;
+    border-radius: 50% !important;
+    font-weight: 600;
+    background: #e0e7ff !important;
+    color: #4f46e5 !important;
+}
+
+/* Task title */
+.task-board-title {
+    margin-bottom: 8px;
+}
+
+.task-board-title a {
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: #1e293b;
+    line-height: 1.45;
+    text-decoration: none;
+    display: block;
+}
+
+.task-board-title a:hover {
+    color: #4f46e5;
+}
+
+/* ============================================================
+   7. TASK CARD FOOTER — Icons, dates, metadata
+   ============================================================ */
+
+/* Category badge */
+.task-board-category-container {
+    margin-bottom: 6px;
+}
+
+.task-board-category {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 100px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    line-height: 1.5;
+}
+
+.task-board-category a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.task-board-category a:hover {
+    color: #4f46e5;
+}
+
+/* Tags — pill-shaped badges */
+.task-board .task-tags {
+    margin: 6px 0 4px;
+}
+
+.task-board .task-tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.task-board .task-tags .task-tag {
+    display: inline-block;
+    font-size: 0.625rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: #eef2ff;
+    color: #4338ca;
+    border: none;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+}
+
+/* Icons row */
+.task-board-icons {
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.task-board-icons-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+
+.task-board-icons-row:last-child {
+    margin-bottom: 0;
+}
+
+.task-board-icons a,
+.task-board-icons span {
+    font-size: 0.6875rem;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.12s ease;
+}
+
+.task-board-icons a:hover {
+    color: #4f46e5;
+}
+
+.task-board-icons i {
+    font-size: 0.6875rem;
+    color: #94a3b8;
+}
+
+/* Reference badge */
+.task-board-reference {
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.6875rem !important;
+    color: #94a3b8 !important;
+}
+
+/* Task score */
+.task-board .task-score {
+    font-size: 0.6875rem;
+    color: #f59e0b;
+}
+
+.task-board .task-score i {
+    color: #f59e0b;
+}
+
+/* Due date */
+.task-board .task-date {
+    font-size: 0.6875rem;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.task-board .task-date i {
+    font-size: 0.625rem;
+    color: #94a3b8;
+}
+
+.task-board .task-date-overdue {
+    color: #dc2626 !important;
+    font-weight: 600;
+}
+
+.task-board .task-date-overdue i {
+    color: #dc2626 !important;
+}
+
+.task-board .task-date-today {
+    color: #f59e0b !important;
+    font-weight: 600;
+}
+
+.task-board .task-date-today i {
+    color: #f59e0b !important;
+}
+
+/* Priority indicator */
+.task-board .task-priority {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 100px;
+}
+
+/* Task age badges */
+.task-board .task-icon-age {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.625rem;
+    color: #94a3b8;
+}
+
+.task-board .task-icon-age-column {
+    color: #94a3b8;
+    font-size: 0.625rem;
+}
+
+/* Closed label */
+.task-board-closed {
+    font-size: 0.6875rem;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* Sort handle */
+.task-board-sort-handle {
+    cursor: grab;
+    padding: 4px 8px;
+    color: #cbd5e1;
+    text-align: center;
+}
+
+.task-board-sort-handle:hover {
+    color: #94a3b8;
+}
+
+/* Saving state spinner */
+.task-board-saving-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #4f46e5;
+}
+
+/* ============================================================
+   8. TASK CARD COLORS — Left border + subtle tinted background
+   ============================================================ */
+
+.task-board.color-yellow {
+    border-left-color: #f59e0b !important;
+    background: #fffbeb !important;
+}
+
+.task-board.color-blue {
+    border-left-color: #3b82f6 !important;
+    background: #eff6ff !important;
+}
+
+.task-board.color-green {
+    border-left-color: #10b981 !important;
+    background: #ecfdf5 !important;
+}
+
+.task-board.color-red {
+    border-left-color: #ef4444 !important;
+    background: #fef2f2 !important;
+}
+
+.task-board.color-orange {
+    border-left-color: #f97316 !important;
+    background: #fff7ed !important;
+}
+
+.task-board.color-purple {
+    border-left-color: #8b5cf6 !important;
+    background: #f5f3ff !important;
+}
+
+.task-board.color-grey {
+    border-left-color: #94a3b8 !important;
+    background: #f8fafc !important;
+}
+
+.task-board.color-amber {
+    border-left-color: #d97706 !important;
+    background: #fffbeb !important;
+}
+
+/* Default / white — keep subtle neutral border */
+.task-board.color-white,
+.task-board.color-default {
+    border-left-color: #e2e8f0 !important;
+    background: #ffffff !important;
+}
+
+/* Tag colors inside cards */
+.task-tag.color-yellow { background: #fef3c7 !important; color: #92400e !important; }
+.task-tag.color-blue   { background: #dbeafe !important; color: #1e40af !important; }
+.task-tag.color-green  { background: #d1fae5 !important; color: #065f46 !important; }
+.task-tag.color-red    { background: #fee2e2 !important; color: #991b1b !important; }
+.task-tag.color-orange { background: #fed7aa !important; color: #9a3412 !important; }
+.task-tag.color-purple { background: #ede9fe !important; color: #5b21b6 !important; }
+.task-tag.color-grey   { background: #f1f5f9 !important; color: #475569 !important; }
+.task-tag.color-amber  { background: #fef3c7 !important; color: #92400e !important; }
+
+/* Category color overrides */
+.task-board-category.color-yellow { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.task-board-category.color-blue   { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.task-board-category.color-green  { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+.task-board-category.color-red    { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+.task-board-category.color-orange { background: #fed7aa; color: #9a3412; border-color: #fdba74; }
+.task-board-category.color-purple { background: #ede9fe; color: #5b21b6; border-color: #ddd6fe; }
+
+/* ============================================================
+   9. DRAG AND DROP
+   ============================================================ */
+
+.draggable-placeholder {
+    border: 2px dashed #c7d2fe !important;
+    border-radius: 12px;
+    background: #eef2ff !important;
+    min-height: 60px;
+    margin-bottom: 8px;
+    transition: all 0.15s ease;
+}
+
+div.draggable-item-selected {
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: rotate(1.5deg);
+    opacity: 0.92;
+    z-index: 1000;
+    border-color: #a5b4fc !important;
+}
+
+/* ============================================================
+   10. PROJECT HEADER — Filters / Search Bar
+   ============================================================ */
+
+.project-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 8px;
+}
+
+/* Search / filter box */
+.project-header .filter-box-component form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-header .filter-box-component input[type="text"],
+.project-header input[type="text"] {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 0.8125rem;
+    color: #334155;
+    background: #f8fafc;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    min-width: 220px;
+}
+
+.project-header .filter-box-component input[type="text"]:focus,
+.project-header input[type="text"]:focus {
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    background: #ffffff;
+}
+
+/* View switcher — segmented control look */
+.project-header .views-switcher-component {
+    display: inline-flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 3px;
+    gap: 2px;
+}
+
+.project-header .views-switcher-component a,
+.project-header .views-switcher-component span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #64748b;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.project-header .views-switcher-component a:hover {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.project-header .views-switcher-component a.active,
+.project-header .views-switcher-component .active {
+    background: #ffffff;
+    color: #1e293b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+/* Filter/action buttons as pills */
+.project-header .dropdown-component {
+    display: inline-flex;
+}
+
+.project-header .dropdown-component > a,
+.project-header > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #475569;
+    background: #f1f5f9;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.project-header .dropdown-component > a:hover,
+.project-header > a:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+/* Board selector in page header */
+header .board-selector-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+header .board-selector-container input[type="text"] {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 0.8125rem;
+    background: #f8fafc;
+}
+
+/* ============================================================
+   11. COLLAPSED COLUMNS
+   ============================================================ */
+
+td.board-column-task-collapsed {
+    width: 36px !important;
+    min-width: 36px;
+    max-width: 36px;
+    background: #f1f5f9 !important;
+    border-radius: 0 0 12px 12px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+td.board-column-task-collapsed:hover {
+    background: #e2e8f0 !important;
+}
+
+#board th.board-column-header-collapsed {
+    width: 36px !important;
+    min-width: 36px;
+    max-width: 36px;
+    background: #f1f5f9 !important;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 8px 4px !important;
+    text-align: center;
+}
+
+.board-column-collapsed {
+    text-align: center;
+}
+
+.board-rotation-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+
+.board-rotation {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 8px 2px;
+    letter-spacing: 0.02em;
+    transition: color 0.15s ease;
+}
+
+.board-rotation:hover {
+    color: #4f46e5;
+}
+
+.board-rotation i {
+    font-size: 0.6875rem;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+/* ============================================================
+   12. COMPACT / HORIZONTAL SCROLL MODE
+   ============================================================ */
+
+.board-container-compact #board {
+    table-layout: auto;
+}
+
+#board th.board-column-header.board-column-compact {
+    min-width: 220px;
+}
+
+.board-task-list-compact .task-board {
+    padding: 0 !important;
+}
+
+.board-task-list-compact .task-board-expanded {
+    padding: 6px 10px;
+}
+
+/* ============================================================
+   13. MISCELLANEOUS
+   ============================================================ */
+
+/* Public board adjustments */
+.public-board #board th.board-column-header {
+    background: #f1f5f9;
+}
+
+/* Task edit icon on hover */
+.task-board-header .fa-edit {
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    transition: color 0.12s ease;
+}
+
+.task-board-header .fa-edit:hover {
+    color: #4f46e5;
+}
+
+/* Smooth transitions for column expand/collapse */
+.board-column-expanded,
+.board-column-collapsed {
+    transition: opacity 0.2s ease;
+}
+
+/* Task board change assignee link */
+.task-board-change-assignee {
+    color: #64748b;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.task-board-change-assignee:hover {
+    color: #4f46e5;
+}
+
+/* Milestone flag */
+.task-board-icons .fa-flag.flag-milestone {
+    color: #f59e0b;
+}
+
+/* Subtask progress */
+.task-board-icons .fa-bars {
+    color: #94a3b8;
+}
+
+/* Link and attachment icons */
+.task-board-icons .fa-code-fork,
+.task-board-icons .fa-external-link,
+.task-board-icons .fa-paperclip,
+.task-board-icons .fa-comments-o,
+.task-board-icons .fa-file-text-o {
+    color: #94a3b8;
+    font-size: 0.6875rem;
+}
+
+/* WIP limit background on column cells */
+#board td.board-task-list-limit {
+    background: #fef2f2 !important;
+}

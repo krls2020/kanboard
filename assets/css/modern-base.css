@@ -1,0 +1,565 @@
+/* ==========================================================================
+   Modern Base Theme for Kanboard
+   Loaded AFTER existing styles to override the default appearance.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Variables — Design System
+   -------------------------------------------------------------------------- */
+:root {
+    /* Primary palette (indigo) */
+    --modern-primary-50: #eef2ff;
+    --modern-primary-100: #e0e7ff;
+    --modern-primary-200: #c7d2fe;
+    --modern-primary-300: #a5b4fc;
+    --modern-primary-400: #818cf8;
+    --modern-primary-500: #6366f1;
+    --modern-primary-600: #4f46e5;
+    --modern-primary-700: #4338ca;
+    --modern-primary-800: #3730a3;
+    --modern-primary-900: #312e81;
+
+    /* Success (green) */
+    --modern-success-50: #f0fdf4;
+    --modern-success-100: #dcfce7;
+    --modern-success-500: #22c55e;
+    --modern-success-600: #16a34a;
+    --modern-success-700: #15803d;
+
+    /* Warning (amber) */
+    --modern-warning-50: #fffbeb;
+    --modern-warning-100: #fef3c7;
+    --modern-warning-500: #f59e0b;
+    --modern-warning-600: #d97706;
+    --modern-warning-700: #b45309;
+
+    /* Danger (red) */
+    --modern-danger-50: #fef2f2;
+    --modern-danger-100: #fee2e2;
+    --modern-danger-500: #ef4444;
+    --modern-danger-600: #dc2626;
+    --modern-danger-700: #b91c1c;
+
+    /* Neutral (slate) */
+    --modern-slate-50: #f8fafc;
+    --modern-slate-100: #f1f5f9;
+    --modern-slate-200: #e2e8f0;
+    --modern-slate-300: #cbd5e1;
+    --modern-slate-400: #94a3b8;
+    --modern-slate-500: #64748b;
+    --modern-slate-600: #475569;
+    --modern-slate-700: #334155;
+    --modern-slate-800: #1e293b;
+    --modern-slate-900: #0f172a;
+
+    /* Border radius */
+    --modern-radius-sm: 6px;
+    --modern-radius: 8px;
+    --modern-radius-md: 10px;
+    --modern-radius-lg: 12px;
+    --modern-radius-xl: 16px;
+
+    /* Shadows */
+    --modern-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --modern-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --modern-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --modern-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    --modern-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    --modern-shadow-focus: 0 0 0 3px rgba(79, 70, 229, 0.15);
+
+    /* Typography */
+    --modern-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    --modern-font-mono: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono',
+        Menlo, Consolas, monospace;
+
+    /* Transitions */
+    --modern-transition: 0.2s ease;
+    --modern-transition-fast: 0.15s ease;
+
+    /* Override Kanboard's own variables */
+    --body-background-color: #f8fafc;
+    --header-background-color: #ffffff;
+    --color-primary: #1e293b;
+    --color-light: #64748b;
+    --color-lighter: #e2e8f0;
+    --color-dark: #0f172a;
+    --color-medium: #475569;
+    --link-color-primary: #4f46e5;
+    --link-color-focus: #4338ca;
+    --link-color-hover: #3730a3;
+    --alert-color-success: #15803d;
+    --alert-background-color-success: #f0fdf4;
+    --alert-border-color-success: #dcfce7;
+    --alert-color-error: #b91c1c;
+    --alert-background-color-error: #fef2f2;
+    --alert-border-color-error: #fee2e2;
+    --alert-color-info: #1d4ed8;
+    --alert-background-color-info: #eff6ff;
+    --alert-border-color-info: #dbeafe;
+    --alert-color-default: #b45309;
+    --alert-background-color-default: #fffbeb;
+    --alert-border-color-default: #fef3c7;
+    --button-primary-background-color: #4f46e5;
+    --button-primary-border-color: #4338ca;
+    --button-primary-background-color-focus: #4338ca;
+    --button-primary-border-color-focus: #3730a3;
+    --button-default-background-color: #ffffff;
+    --button-default-border-color: #e2e8f0;
+    --button-default-background-color-focus: #f8fafc;
+    --button-default-border-color-focus: #cbd5e1;
+    --button-danger-background-color: #dc2626;
+    --button-danger-border-color: #b91c1c;
+    --button-danger-background-color-focus: #b91c1c;
+    --button-danger-border-color-focus: #991b1b;
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Resets / Overrides
+   -------------------------------------------------------------------------- */
+body {
+    font-family: var(--modern-font) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    line-height: 1.6 !important;
+    background-color: var(--modern-slate-50) !important;
+    color: var(--modern-slate-700) !important;
+    text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+    border-color: var(--modern-slate-200);
+}
+
+::selection {
+    background-color: var(--modern-primary-100);
+    color: var(--modern-primary-900);
+}
+
+/* --------------------------------------------------------------------------
+   3. Header / Navigation
+   -------------------------------------------------------------------------- */
+header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid var(--modern-slate-200) !important;
+    box-shadow: var(--modern-shadow-xs) !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 20px !important;
+    position: relative;
+    z-index: 100;
+}
+
+header .title-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+header .title-container .logo a,
+header .title-container a:first-child {
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    background-color: var(--modern-primary-600) !important;
+    padding: 4px 10px !important;
+    border-radius: var(--modern-radius-sm) !important;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color var(--modern-transition);
+}
+
+header .title-container .logo a:hover,
+header .title-container a:first-child:hover {
+    background-color: var(--modern-primary-700) !important;
+}
+
+header .board-selector-container {
+    flex: 1;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    padding: 0 16px;
+}
+
+header .menus-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+header a {
+    color: var(--modern-slate-600) !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 6px 10px !important;
+    border-radius: var(--modern-radius-sm) !important;
+    transition: all var(--modern-transition) !important;
+    display: inline-flex;
+    align-items: center;
+}
+
+header a:hover,
+header a:focus {
+    color: var(--modern-primary-600) !important;
+    background-color: var(--modern-primary-50) !important;
+}
+
+header .dropdown-component {
+    position: relative;
+}
+
+header .dropdown-menu {
+    background: #ffffff !important;
+    border: 1px solid var(--modern-slate-200) !important;
+    border-radius: var(--modern-radius) !important;
+    box-shadow: var(--modern-shadow-md) !important;
+    padding: 4px !important;
+    min-width: 180px !important;
+    margin-top: 4px !important;
+}
+
+header .dropdown-menu li a {
+    padding: 8px 12px !important;
+    border-radius: var(--modern-radius-sm) !important;
+    color: var(--modern-slate-700) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    transition: all var(--modern-transition-fast) !important;
+}
+
+header .dropdown-menu li a:hover {
+    background-color: var(--modern-primary-50) !important;
+    color: var(--modern-primary-700) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Page Layout
+   -------------------------------------------------------------------------- */
+section.page {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 24px 24px 48px !important;
+    background-color: transparent !important;
+}
+
+/* Full-width board pages */
+section.page:has(.board) {
+    max-width: none !important;
+    padding: 16px 20px 48px !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Typography
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--modern-font) !important;
+    color: var(--modern-slate-800) !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    font-weight: 700 !important;
+    font-size: 1.75rem !important;
+}
+
+h2 {
+    font-weight: 600 !important;
+    font-size: 1.35rem !important;
+}
+
+h3 {
+    font-weight: 600 !important;
+    font-size: 1.15rem !important;
+}
+
+h4, h5, h6 {
+    font-weight: 600 !important;
+}
+
+p, li, td, th, label, span {
+    color: var(--modern-slate-600);
+}
+
+a {
+    color: var(--modern-primary-600) !important;
+    text-decoration: none !important;
+    transition: color var(--modern-transition) !important;
+}
+
+a:hover,
+a:focus {
+    color: var(--modern-primary-700) !important;
+    text-decoration: underline !important;
+}
+
+code, pre {
+    font-family: var(--modern-font-mono) !important;
+    font-size: 0.875em !important;
+    background-color: var(--modern-slate-100) !important;
+    border-radius: var(--modern-radius-sm) !important;
+    border: 1px solid var(--modern-slate-200) !important;
+}
+
+code {
+    padding: 2px 6px !important;
+}
+
+pre {
+    padding: 12px 16px !important;
+    overflow-x: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. Buttons
+   -------------------------------------------------------------------------- */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+    font-family: var(--modern-font) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 8px 16px !important;
+    border-radius: var(--modern-radius) !important;
+    border: 1px solid transparent !important;
+    cursor: pointer !important;
+    transition: all var(--modern-transition) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4 !important;
+    text-decoration: none !important;
+    outline: none;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--modern-shadow-sm) !important;
+}
+
+.btn:active,
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+    transform: translateY(0);
+    box-shadow: none !important;
+}
+
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="button"]:focus {
+    box-shadow: var(--modern-shadow-focus) !important;
+    outline: none !important;
+}
+
+/* Primary / submit buttons */
+input[type="submit"],
+.btn-blue {
+    background-color: var(--modern-primary-600) !important;
+    color: #ffffff !important;
+    border-color: var(--modern-primary-600) !important;
+}
+
+input[type="submit"]:hover,
+.btn-blue:hover {
+    background-color: var(--modern-primary-700) !important;
+    border-color: var(--modern-primary-700) !important;
+}
+
+/* Default buttons */
+.btn {
+    background-color: #ffffff !important;
+    color: var(--modern-slate-700) !important;
+    border-color: var(--modern-slate-300) !important;
+}
+
+.btn:hover {
+    background-color: var(--modern-slate-50) !important;
+    border-color: var(--modern-slate-400) !important;
+    color: var(--modern-slate-800) !important;
+}
+
+/* Danger buttons */
+.btn-red {
+    background-color: var(--modern-danger-600) !important;
+    color: #ffffff !important;
+    border-color: var(--modern-danger-600) !important;
+}
+
+.btn-red:hover {
+    background-color: var(--modern-danger-700) !important;
+    border-color: var(--modern-danger-700) !important;
+}
+
+/* Disabled state */
+.btn[disabled],
+button[disabled],
+input[type="submit"][disabled] {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Form Elements
+   -------------------------------------------------------------------------- */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+select,
+textarea {
+    font-family: var(--modern-font) !important;
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    border: 1px solid var(--modern-slate-300) !important;
+    border-radius: var(--modern-radius) !important;
+    background-color: #ffffff !important;
+    color: var(--modern-slate-800) !important;
+    transition: all var(--modern-transition) !important;
+    outline: none !important;
+    line-height: 1.5 !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover,
+input[type="url"]:hover,
+input[type="number"]:hover,
+input[type="search"]:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--modern-slate-400) !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--modern-primary-400) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+}
+
+textarea {
+    border-radius: var(--modern-radius) !important;
+    min-height: 80px;
+    resize: vertical;
+}
+
+select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 16px !important;
+    padding-right: 36px !important;
+    cursor: pointer;
+}
+
+label {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: var(--modern-slate-700) !important;
+    display: block;
+    margin-bottom: 4px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--modern-primary-600);
+    cursor: pointer;
+}
+
+/* Placeholder text */
+::placeholder {
+    color: var(--modern-slate-400) !important;
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. Flash Messages / Alerts
+   -------------------------------------------------------------------------- */
+.alert,
+.alert-success,
+.alert-error,
+.alert-info,
+.alert-normal {
+    border-radius: var(--modern-radius) !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    margin-bottom: 16px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.5 !important;
+}
+
+.alert-success {
+    background-color: var(--modern-success-50) !important;
+    border-color: var(--modern-success-500) !important;
+    color: var(--modern-success-700) !important;
+}
+
+.alert-error {
+    background-color: var(--modern-danger-50) !important;
+    border-color: var(--modern-danger-500) !important;
+    color: var(--modern-danger-700) !important;
+}
+
+.alert-info {
+    background-color: #eff6ff !important;
+    border-color: #3b82f6 !important;
+    color: #1d4ed8 !important;
+}
+
+.alert-normal {
+    background-color: var(--modern-slate-100) !important;
+    border-color: var(--modern-slate-300) !important;
+    color: var(--modern-slate-700) !important;
+}
+
+/* Default .alert (warning style) */
+.alert:not(.alert-success):not(.alert-error):not(.alert-info):not(.alert-normal) {
+    background-color: var(--modern-warning-50) !important;
+    border-color: var(--modern-warning-500) !important;
+    color: var(--modern-warning-700) !important;
+}
+
+.alert-fade-out {
+    transition: opacity 0.4s ease !important;
+    opacity: 0 !important;
+}
