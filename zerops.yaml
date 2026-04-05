@@ -1,0 +1,17 @@
+zerops:
+  - setup: kanboard
+    build:
+      base: php@8.4
+      os: ubuntu
+      buildCommands:
+        - composer install --no-dev --optimize-autoloader
+      deployFiles: [.]
+      cache: [vendor]
+    run:
+      os: ubuntu
+      envVariables:
+        DB_HOST: db
+        DB_PORT: ${db_port}
+        DB_NAME: ${db_dbName}
+        DB_USER: ${db_user}
+        DB_PASSWORD: ${db_password}

@@ -17,8 +17,6 @@ SECURITY.md export-ignore
 Vagrantfile export-ignore
 data/*.sqlite export-ignore
 tests export-ignore
-composer.json export-ignore
-composer.lock export-ignore
 
 assets/css/src export-ignore
 assets/js/components export-ignore
